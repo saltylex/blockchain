@@ -9,7 +9,6 @@ function App() {
     const [username, setUsername] = useState("");
     const [bio, setBio] = useState("");
     const [content, setContent] = useState("");
-
     useEffect(() => {
         async function load() {
             const accounts = await web3.eth.getAccounts();
@@ -69,10 +68,12 @@ function App() {
             <h2>Profile</h2>
             <p>Username: {profile.username}</p>
             <p>Bio: {profile.bio}</p>
+            {profile === {} && <div>
             <h2>Create Profile</h2>
             <input value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" />
             <input value={bio} onChange={e => setBio(e.target.value)} placeholder="Bio" />
             <button onClick={createProfile}>Create Profile</button>
+            </div>}
             <h2>Create Post</h2>
             <input value={content} onChange={e => setContent(e.target.value)} placeholder="Content" />
             <button onClick={createPost}>Create Post</button>
